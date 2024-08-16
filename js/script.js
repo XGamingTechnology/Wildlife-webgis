@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }).addTo(map);
 
     // Define icons for each species
-   // Define icons for each species
     const icons = {
         'Lion': L.icon({ iconUrl: 'icons/lion.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
         'Elephant': L.icon({ iconUrl: 'icons/elephant.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
@@ -22,11 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'Koala': L.icon({ iconUrl: 'icons/koala.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
         'Bear': L.icon({ iconUrl: 'icons/bear.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
         'Gorilla': L.icon({ iconUrl: 'icons/gorilla.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        'Arctic Fox': L.icon({ iconUrl: 'icons/fox.png', iconSize: [32, 32], iconAnchor: [16, 32] }) // Notice the space
+        'Arctic Fox': L.icon({ iconUrl: 'icons/fox.png', iconSize: [32, 32], iconAnchor: [16, 32] }) 
     };
-
-// Ensure the key matches exactly how it's listed in the GeoJSON data
-
 
     // Function to load and display GeoJSON data
     function loadGeoJsonData(url) {
@@ -58,6 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Add the layer to the map
                 geoJsonLayer.addTo(map);
 
+                // Visualize migration routes for all species initially
+                visualizeMigrationRoutes(data);
+
                 // Handle species selection
                 document.getElementById('species-select').addEventListener('change', function () {
                     const selectedSpecies = this.value;
@@ -65,16 +64,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     if (selectedSpecies === 'all') {
                         geoJsonLayer.addData(data); // Show all species if "All Species" is selected
+                        visualizeMigrationRoutes(data);
                     } else {
                         const filteredData = {
                             type: 'FeatureCollection',
                             features: data.features.filter(feature => feature.properties.species === selectedSpecies)
                         };
                         geoJsonLayer.addData(filteredData); // Add only the filtered species
+                        visualizeMigrationRoutes(filteredData);
                     }
                 });
             })
             .catch(error => console.error('Error loading the GeoJSON data:', error));
+    }
+
+    // Function to visualize migration routes
+    function visualizeMigrationRoutes(data) {
+        // Group points by animal ID
+        const routes = {};
+
+        data.features.forEach(feature => {
+            const animalId = feature.properties.animalId;
+            const coordinates = [feature.geometry.coordinates[1], feature.geometry.coordinates[0]];
+
+            if (!routes[animalId]) {
+                routes[animalId] = [];
+            }
+
+            routes[animalId].push(coordinates);
+        });
+
+        // Draw the polylines
+        Object.keys(routes).forEach(animalId => {
+            if (routes[animalId].length > 1) {
+                console.log(`Drawing route for ${animalId}:`, routes[animalId]);
+                L.polyline(routes[animalId], { color: 'blue', weight: 3 }).addTo(map);
+            } else {
+                console.log(`No route drawn for ${animalId}, only one point`);
+            }
+        });
     }
 
     // Load the bird tracking data
