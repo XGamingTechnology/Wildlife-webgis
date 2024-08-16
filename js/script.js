@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         Koala: L.icon({ iconUrl: 'icons/koala.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
         Bear: L.icon({ iconUrl: 'icons/bear.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
         Gorilla: L.icon({ iconUrl: 'icons/gorilla.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        ArcticFox: L.icon({ iconUrl: 'icons/arctic-fox.png', iconSize: [32, 32], iconAnchor: [16, 32] })
+        ArcticFox: L.icon({ iconUrl: 'icons/fox.png', iconSize: [32, 32], iconAnchor: [16, 32] })
     };
 
     // Function to load and display GeoJSON data
