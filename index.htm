@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wildlife Data Visualization</title>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <style>
+      #map {
+        height: 500px;
+        width: 100%;
+      }
+      .legend {
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        line-height: 18px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-4 mb-4">Wildlife Data Visualization</h1>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="species-select">Select Bird Species:</label>
+            <select id="species-select" class="form-control">
+              <option value="all">All Species</option>
+              <option value="Lion">Lion</option>
+              <option value="Elephant">Elephant</option>
+              <option value="Giraffe">Giraffe</option>
+              <option value="Zebra">Zebra</option>
+              <option value="Tiger">Tiger</option>
+              <option value="Cheetah">Cheetah</option>
+              <option value="Kangaroo">Kangaroo</option>
+              <option value="Panda">Panda</option>
+              <option value="Penguin">Penguin</option>
+              <option value="Koala">Koala</option>
+              <option value="Bear">Bear</option>
+              <option value="Gorilla">Gorilla</option>
+              <option value="ArcticFox">Arctic Fox</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="map"></div>
+
+      <div class="legend mt-4" id="map-legend">
+        <h5>Species Legend</h5>
+        <ul class="list-unstyled">
+          <li>
+            <span
+              style="
+                background: url('icons/lion.png') no-repeat center center;
+                background-size: contain;
+                width: 20px;
+                height: 20px;
+                display: inline-block;
+              "
+            ></span>
+            Lion
+          </li>
+          <li>
+            <span
+              style="
+                background: url('icons/elephant.png') no-repeat center center;
+                background-size: contain;
+                width: 20px;
+                height: 20px;
+                display: inline-block;
+              "
+            ></span>
+            Elephant
+          </li>
+          <!-- Add more legend items as needed -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
