@@ -8,21 +8,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }).addTo(map);
 
     // Define icons for each species
+   // Define icons for each species
     const icons = {
-        Lion: L.icon({ iconUrl: 'icons/lion.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Elephant: L.icon({ iconUrl: 'icons/elephant.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Giraffe: L.icon({ iconUrl: 'icons/giraffe.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Zebra: L.icon({ iconUrl: 'icons/zebra.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Tiger: L.icon({ iconUrl: 'icons/tiger.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Cheetah: L.icon({ iconUrl: 'icons/cheetah.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Kangaroo: L.icon({ iconUrl: 'icons/kangaroo.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Panda: L.icon({ iconUrl: 'icons/panda.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Penguin: L.icon({ iconUrl: 'icons/penguin.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Koala: L.icon({ iconUrl: 'icons/koala.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Bear: L.icon({ iconUrl: 'icons/bear.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        Gorilla: L.icon({ iconUrl: 'icons/gorilla.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
-        ArcticFox: L.icon({ iconUrl: 'icons/fox.png', iconSize: [32, 32], iconAnchor: [16, 32] })
+        'Lion': L.icon({ iconUrl: 'icons/lion.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Elephant': L.icon({ iconUrl: 'icons/elephant.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Giraffe': L.icon({ iconUrl: 'icons/giraffe.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Zebra': L.icon({ iconUrl: 'icons/zebra.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Tiger': L.icon({ iconUrl: 'icons/tiger.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Cheetah': L.icon({ iconUrl: 'icons/cheetah.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Kangaroo': L.icon({ iconUrl: 'icons/kangaroo.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Panda': L.icon({ iconUrl: 'icons/panda.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Penguin': L.icon({ iconUrl: 'icons/penguin.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Koala': L.icon({ iconUrl: 'icons/koala.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Bear': L.icon({ iconUrl: 'icons/bear.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Gorilla': L.icon({ iconUrl: 'icons/gorilla.png', iconSize: [32, 32], iconAnchor: [16, 32] }),
+        'Arctic Fox': L.icon({ iconUrl: 'icons/fox.png', iconSize: [32, 32], iconAnchor: [16, 32] }) // Notice the space
     };
+
+// Ensure the key matches exactly how it's listed in the GeoJSON data
+
 
     // Function to load and display GeoJSON data
     function loadGeoJsonData(url) {
